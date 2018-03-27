@@ -10,19 +10,17 @@ import UIKit
 
 class SelectFilterItemViewCell: SelectFilterBaseCell {
     
-    var titleLabel = UILabel()
-    
-    fileprivate var bgImageView: UIImageView = UIImageView()
+    var titleLabel = UILabel()        
     
     override var item: ConiditionItem? {
         didSet {
             guard let i = item else { return }
             if i.choose {
                 titleLabel.textColor = UIColor(hex: 0x8073e2)
-                setBgColor(UIColor(hex: 0x8073e2).withAlphaComponent(0.12))
+                layer.borderColor = UIColor(hex: 0x8073e2).withAlphaComponent(0.12).cgColor
             }else {
                 titleLabel.textColor = UIColor(hex: 0x333333)
-                setBgColor(UIColor(hex: 0xf4f4f4))
+                layer.borderColor = UIColor(hex: 0xf4f4f4).cgColor
             }
             titleLabel.text = i.desc
         }
@@ -32,6 +30,7 @@ class SelectFilterItemViewCell: SelectFilterBaseCell {
         super.init(frame: frame)
         addSubview(titleLabel)
         titleLabel.textAlignment = .center
+        layer.borderWidth = 1
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,17 +41,6 @@ class SelectFilterItemViewCell: SelectFilterBaseCell {
         super.layoutSubviews()
         titleLabel.sizeToFit()
         titleLabel.frame = bounds
-    }
-    
-    fileprivate func setBgColor(_ color: UIColor) {
-//        bgImageView.removeFromSuperview()
-//        bgImageView = UIImageView(image: kt_drawRectWithRoundedCorner(radius: 4,
-//                                                                      borderWidth: 0,
-//                                                                      backgroundColor: color,
-//                                                                      borderColor: UIColor.clear))
-//        self.insertSubview(bgImageView, at: 0)
-        layer.borderColor = color.cgColor
-        layer.borderWidth = 1
     }
     
 }

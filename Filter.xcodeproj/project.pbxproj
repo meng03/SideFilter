@@ -70,7 +70,7 @@
 		AA91DDE02068D06A006F800A /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				AA91DDF82068E204006F800A /* default */,
+				AA91DDF82068E204006F800A /* demo */,
 				AA91DDF32068D07C006F800A /* core */,
 				AA91DDE12068D06A006F800A /* AppDelegate.swift */,
 				AA91DDE32068D06A006F800A /* ViewController.swift */,
@@ -93,7 +93,7 @@
 			path = core;
 			sourceTree = "<group>";
 		};
-		AA91DDF82068E204006F800A /* default */ = {
+		AA91DDF82068E204006F800A /* demo */ = {
 			isa = PBXGroup;
 			children = (
 				AA91DDF92068E23C006F800A /* DefaultFilterViewController.swift */,
@@ -101,7 +101,7 @@
 				AA91DDFF20691546006F800A /* Utils.swift */,
 				AA91DE032069F8C3006F800A /* SelectFilterCell.swift */,
 			);
-			path = default;
+			path = demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
