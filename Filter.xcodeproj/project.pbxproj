@@ -12,6 +12,14 @@
 		AA91DDE72068D06A006F800A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA91DDE52068D06A006F800A /* Main.storyboard */; };
 		AA91DDE92068D06A006F800A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA91DDE82068D06A006F800A /* Assets.xcassets */; };
 		AA91DDEC2068D06A006F800A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA91DDEA2068D06A006F800A /* LaunchScreen.storyboard */; };
+		AA91DDF52068D09F006F800A /* FilterCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DDF42068D09F006F800A /* FilterCondition.swift */; };
+		AA91DDF72068D4D6006F800A /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DDF62068D4D6006F800A /* FilterViewController.swift */; };
+		AA91DDFA2068E23C006F800A /* DefaultFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DDF92068E23C006F800A /* DefaultFilterViewController.swift */; };
+		AA91DDFC2068F592006F800A /* FilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DDFB2068F592006F800A /* FilterItemView.swift */; };
+		AA91DDFE206914C0006F800A /* FilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DDFD206914C0006F800A /* FilterHeaderView.swift */; };
+		AA91DE0020691546006F800A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DDFF20691546006F800A /* Utils.swift */; };
+		AA91DE022069E6D1006F800A /* FilterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE012069E6D1006F800A /* FilterConfiguration.swift */; };
+		AA91DE042069F8C3006F800A /* SelectFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE032069F8C3006F800A /* SelectFilterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,14 @@
 		AA91DDE82068D06A006F800A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA91DDEB2068D06A006F800A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA91DDED2068D06A006F800A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA91DDF42068D09F006F800A /* FilterCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCondition.swift; sourceTree = "<group>"; };
+		AA91DDF62068D4D6006F800A /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		AA91DDF92068E23C006F800A /* DefaultFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFilterViewController.swift; sourceTree = "<group>"; };
+		AA91DDFB2068F592006F800A /* FilterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemView.swift; sourceTree = "<group>"; };
+		AA91DDFD206914C0006F800A /* FilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderView.swift; sourceTree = "<group>"; };
+		AA91DDFF20691546006F800A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AA91DE012069E6D1006F800A /* FilterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterConfiguration.swift; sourceTree = "<group>"; };
+		AA91DE032069F8C3006F800A /* SelectFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFilterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +70,8 @@
 		AA91DDE02068D06A006F800A /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				AA91DDF82068E204006F800A /* default */,
+				AA91DDF32068D07C006F800A /* core */,
 				AA91DDE12068D06A006F800A /* AppDelegate.swift */,
 				AA91DDE32068D06A006F800A /* ViewController.swift */,
 				AA91DDE52068D06A006F800A /* Main.storyboard */,
@@ -62,6 +80,28 @@
 				AA91DDED2068D06A006F800A /* Info.plist */,
 			);
 			path = Filter;
+			sourceTree = "<group>";
+		};
+		AA91DDF32068D07C006F800A /* core */ = {
+			isa = PBXGroup;
+			children = (
+				AA91DDF42068D09F006F800A /* FilterCondition.swift */,
+				AA91DDF62068D4D6006F800A /* FilterViewController.swift */,
+				AA91DDFB2068F592006F800A /* FilterItemView.swift */,
+				AA91DE012069E6D1006F800A /* FilterConfiguration.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		AA91DDF82068E204006F800A /* default */ = {
+			isa = PBXGroup;
+			children = (
+				AA91DDF92068E23C006F800A /* DefaultFilterViewController.swift */,
+				AA91DDFD206914C0006F800A /* FilterHeaderView.swift */,
+				AA91DDFF20691546006F800A /* Utils.swift */,
+				AA91DE032069F8C3006F800A /* SelectFilterCell.swift */,
+			);
+			path = default;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +176,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA91DDF52068D09F006F800A /* FilterCondition.swift in Sources */,
+				AA91DDFC2068F592006F800A /* FilterItemView.swift in Sources */,
+				AA91DDFA2068E23C006F800A /* DefaultFilterViewController.swift in Sources */,
+				AA91DDFE206914C0006F800A /* FilterHeaderView.swift in Sources */,
 				AA91DDE42068D06A006F800A /* ViewController.swift in Sources */,
+				AA91DDF72068D4D6006F800A /* FilterViewController.swift in Sources */,
 				AA91DDE22068D06A006F800A /* AppDelegate.swift in Sources */,
+				AA91DE022069E6D1006F800A /* FilterConfiguration.swift in Sources */,
+				AA91DE0020691546006F800A /* Utils.swift in Sources */,
+				AA91DE042069F8C3006F800A /* SelectFilterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
