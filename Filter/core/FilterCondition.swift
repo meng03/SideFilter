@@ -18,14 +18,15 @@ enum ListFilterSectionType {
 protocol ConiditionItem: class {
     var desc: String? { get set }
     var choose: Bool { get set }
-    var value: Any? { get }
+    var value: Any? { get } //用于上传到server的数据
     func copy() -> ConiditionItem
 }
 
 //输入类型（输入文字，时间选择）
 protocol InputItem: class {
     var placeHolder: String? { get set }
-    var value: Any? { get }
+    var desc: String? { get set } //有值的情况下，输入框中应该显示的
+    var value: Any? { get } //用于上传到server的数据
 }
 
 class SelectFilterCondition: FilterCondition{
@@ -104,7 +105,7 @@ class RangeFilterCondition: FilterCondition{
     }
 }
 
-class inputFilterCondition: FilterCondition {
+class InputFilterCondition: FilterCondition {
     var input: InputItem?
     var placeHolder: String?
     

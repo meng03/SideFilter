@@ -20,6 +20,7 @@
 		AA91DE0020691546006F800A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DDFF20691546006F800A /* Utils.swift */; };
 		AA91DE022069E6D1006F800A /* FilterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE012069E6D1006F800A /* FilterConfiguration.swift */; };
 		AA91DE042069F8C3006F800A /* SelectFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE032069F8C3006F800A /* SelectFilterCell.swift */; };
+		AA91DE1A206CDC7D006F800A /* InputFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE19206CDC7D006F800A /* InputFilterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		AA91DDFF20691546006F800A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		AA91DE012069E6D1006F800A /* FilterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterConfiguration.swift; sourceTree = "<group>"; };
 		AA91DE032069F8C3006F800A /* SelectFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFilterCell.swift; sourceTree = "<group>"; };
+		AA91DE19206CDC7D006F800A /* InputFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFilterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				AA91DDFD206914C0006F800A /* FilterHeaderView.swift */,
 				AA91DDFF20691546006F800A /* Utils.swift */,
 				AA91DE032069F8C3006F800A /* SelectFilterCell.swift */,
+				AA91DE19206CDC7D006F800A /* InputFilterCell.swift */,
 			);
 			path = demo;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				AA91DDFA2068E23C006F800A /* DefaultFilterViewController.swift in Sources */,
 				AA91DDFE206914C0006F800A /* FilterHeaderView.swift in Sources */,
 				AA91DDE42068D06A006F800A /* ViewController.swift in Sources */,
+				AA91DE1A206CDC7D006F800A /* InputFilterCell.swift in Sources */,
 				AA91DDF72068D4D6006F800A /* FilterViewController.swift in Sources */,
 				AA91DDE22068D06A006F800A /* AppDelegate.swift in Sources */,
 				AA91DE022069E6D1006F800A /* FilterConfiguration.swift in Sources */,

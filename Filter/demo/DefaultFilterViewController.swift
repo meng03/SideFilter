@@ -27,6 +27,21 @@ class DefaultConditionItem: ConiditionItem {
     }
 }
 
+class TextInputItem: InputItem {
+    
+    var value: Any? {
+        return input
+    }
+    var input: String? {
+        didSet {
+            desc = input
+        }
+    }
+    var placeHolder: String?
+    var desc: String?
+    
+}
+
 class DefaultFilterViewController: FilterViewController {
     
     let confirmButton = UIButton()
@@ -91,15 +106,22 @@ class DefaultFilterViewController: FilterViewController {
         }
         condition3.origin = c3Items
         
-        conditions = [condition1,condition2,condition3]
+        let condition4 = InputFilterCondition()
+        condition4.title = "条件4"
+        condition4.key = "条件4"
+        condition4.type = .input
+        condition4.cellIdentifier = InputFilterCell.identifier
+        
+        let input = TextInputItem()
+        input.placeHolder = "请输入条件4"
+        condition4.input = input
+        conditions = [condition1,condition2,condition3,condition4]
     }
     
     func configSubView() {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 10, right: 8)
-        layout.itemSize = CGSize(width: view.frame.width/3 - 12, height: 25)
         layout.footerReferenceSize = CGSize.zero
         
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -107,6 +129,7 @@ class DefaultFilterViewController: FilterViewController {
         
         collectionView?.dataSource = self
         collectionView?.delegate = self
+        collectionView?.register(InputFilterCell.self, forCellWithReuseIdentifier: InputFilterCell.identifier)
         collectionView?.register(SelectFilterItemViewCell.self, forCellWithReuseIdentifier: SelectFilterItemViewCell.identifier)
         collectionView?.register(ListFilterHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ListFilterHeaderView.identifier)
         
@@ -144,6 +167,28 @@ class DefaultFilterViewController: FilterViewController {
 
 extension DefaultFilterViewController: UICollectionViewDelegateFlowLayout {
 
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let condition = conditions[indexPath.section]
+        switch condition.type! {
+        case .multipleChoice,.singleChoice:
+            return CGSize(width: view.frame.width/3 - 12, height: 25)
+        case .input:
+            return CGSize(width: view.frame.width, height: 30)
+        case .range:
+            return CGSize(width: view.frame.width, height: 30)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let condition = conditions[section]
+        switch condition.type! {
+        case .multipleChoice,.singleChoice:
+            return UIEdgeInsets(top: 0, left: 8, bottom: 10, right: 8)
+        default:
+            return UIEdgeInsets.zero
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 44)

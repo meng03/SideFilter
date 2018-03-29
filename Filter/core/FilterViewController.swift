@@ -41,7 +41,7 @@ class FilterViewController: UIViewController {
                     dic.merge([c.key: values], uniquingKeysWith: {(current,_) in current})
                 }
             case .input:
-                if let value = (c as? inputFilterCondition)?.input?.value {
+                if let value = (c as? InputFilterCondition)?.input?.value {
                     dic.merge([c.key: value], uniquingKeysWith: {(current,_) in current})
                 }
             case .range:

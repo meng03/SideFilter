@@ -26,15 +26,11 @@ class SelectFilterItemViewCell: SelectFilterBaseCell {
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func commonInit() {
+        super.commonInit()
         addSubview(titleLabel)
         titleLabel.textAlignment = .center
         layer.borderWidth = 1
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     override func layoutSubviews() {
