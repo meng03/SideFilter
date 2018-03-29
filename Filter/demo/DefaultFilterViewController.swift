@@ -110,12 +110,24 @@ class DefaultFilterViewController: FilterViewController {
         condition4.title = "条件4"
         condition4.key = "条件4"
         condition4.type = .input
-        condition4.cellIdentifier = InputFilterCell.identifier
-        
+        condition4.cellIdentifier = TextInputFilterCell.identifier
         let input = TextInputItem()
         input.placeHolder = "请输入条件4"
         condition4.input = input
-        conditions = [condition1,condition2,condition3,condition4]
+        
+        let condition5 = RangeFilterCondition()
+        condition5.title = "条件5"
+        condition5.key = "条件5"
+        condition5.type = .range
+        condition5.cellIdentifier = ValueRangeInputFilterCell.identifier
+        let min = TextInputItem()
+        input.placeHolder = "请输入条件5"
+        condition5.min = min
+        let max = TextInputItem()
+        input.placeHolder = "请输入条件5"
+        condition5.max = max
+        
+        conditions = [condition1,condition2,condition3,condition4,condition5]
     }
     
     func configSubView() {
@@ -129,8 +141,9 @@ class DefaultFilterViewController: FilterViewController {
         
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        collectionView?.register(InputFilterCell.self, forCellWithReuseIdentifier: InputFilterCell.identifier)
+        collectionView?.register(TextInputFilterCell.self, forCellWithReuseIdentifier: TextInputFilterCell.identifier)
         collectionView?.register(SelectFilterItemViewCell.self, forCellWithReuseIdentifier: SelectFilterItemViewCell.identifier)
+        collectionView?.register(ValueRangeInputFilterCell.self, forCellWithReuseIdentifier: ValueRangeInputFilterCell.identifier)
         collectionView?.register(ListFilterHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ListFilterHeaderView.identifier)
         
         resetButton.backgroundColor = UIColor.blue
@@ -186,7 +199,7 @@ extension DefaultFilterViewController: UICollectionViewDelegateFlowLayout {
         case .multipleChoice,.singleChoice:
             return UIEdgeInsets(top: 0, left: 8, bottom: 10, right: 8)
         default:
-            return UIEdgeInsets.zero
+            return UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         }
     }
     
