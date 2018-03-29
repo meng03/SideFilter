@@ -10,14 +10,18 @@ import UIKit
 
 class DefaultConditionItem: ConiditionItem {
     
-    var value: String?
+    var condition: String?
+    
+    var value: Any? {
+        return condition
+    }
     
     var desc: String?
     var choose = false
     func copy() -> ConiditionItem {
         let c = DefaultConditionItem()
         c.choose = choose
-        c.value = value
+        c.condition = condition
         c.desc = desc
         return c
     }
@@ -43,12 +47,13 @@ class DefaultFilterViewController: FilterViewController {
         condition1.title = "条件1"
         condition1.configuration = configuration
         condition1.type = .singleChoice
+        condition1.key = "条件1"
         condition1.cellIdentifier = SelectFilterItemViewCell.identifier
         condition1.required = true
         var c1Items = [DefaultConditionItem]()
         for i in 0...3 {
             let item = DefaultConditionItem()
-            item.value = "c\(i)"
+            item.condition = "c\(i)"
             item.desc = "item\(i)"
             c1Items.append(item)
         }
@@ -57,13 +62,14 @@ class DefaultFilterViewController: FilterViewController {
         
         let condition2 = SelectFilterCondition()
         condition2.title = "条件2"
+        condition2.key = "条件2"
         condition2.configuration = configuration
         condition2.type = .singleChoice
         condition2.cellIdentifier = SelectFilterItemViewCell.identifier
         var c2Items = [DefaultConditionItem]()
         for i in 0...6 {
             let item = DefaultConditionItem()
-            item.value = "c\(i)"
+            item.condition = "c\(i)"
             item.desc = "item\(i)"
             c2Items.append(item)
         }
@@ -72,13 +78,14 @@ class DefaultFilterViewController: FilterViewController {
         
         let condition3 = SelectFilterCondition()
         condition3.title = "条件3"
+        condition3.key = "条件3"
         condition3.configuration = configuration
         condition3.type = .multipleChoice
         condition3.cellIdentifier = SelectFilterItemViewCell.identifier
         var c3Items = [DefaultConditionItem]()
         for i in 0...3 {
             let item = DefaultConditionItem()
-            item.value = "c\(i)"
+            item.condition = "c\(i)"
             item.desc = "item\(i)"
             c3Items.append(item)
         }

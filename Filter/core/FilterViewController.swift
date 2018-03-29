@@ -10,7 +10,7 @@ import UIKit
 
 class FilterViewController: UIViewController {
     
-    var confirmBlock: (([String: Any?]) -> Void)?
+    var confirmBlock: (([String: Any]) -> Void)?
     var conditions: [FilterCondition]!
     var collectionView: UICollectionView?
     
@@ -22,14 +22,44 @@ class FilterViewController: UIViewController {
     }
     
     @objc func confirm(){
-        let initDic = [String: Any?]()
-        let dic: [String: Any?] = conditions.flatMap({$0.condition}).reduce(initDic) { (result, item) -> [String: Any?] in
-            return result.merging(item, uniquingKeysWith: { (current, _) in current })
+        var dic = [String: Any]()
+        for c in conditions {
+            switch c.type! {
+            case .singleChoice:
+                let selectedItem = (c as? SelectFilterCondition)?.items?.filter({$0.choose}).first
+                if let value = selectedItem?.value {
+                    dic.merge([c.key: value], uniquingKeysWith: {(current,_) in current})
+                }
+            case .multipleChoice:
+                if let selectedItems = (c as? SelectFilterCondition)?.items?.filter({$0.choose}),selectedItems.count > 0 {
+                    var values = [Any]()
+                    for item in selectedItems {
+                        if let value = item.value {
+                            values.append(value)
+                        }
+                    }
+                    dic.merge([c.key: values], uniquingKeysWith: {(current,_) in current})
+                }
+            case .input:
+                if let value = (c as? inputFilterCondition)?.input?.value {
+                    dic.merge([c.key: value], uniquingKeysWith: {(current,_) in current})
+                }
+            case .range:
+                let range = c as? RangeFilterCondition
+                var rangeDic = [String: Any]()
+                if let min = range?.min?.value {
+                    rangeDic.merge(["min": min], uniquingKeysWith: {(current,_) in current})
+                }
+                if let max = range?.max?.value {
+                    rangeDic.merge(["max": max], uniquingKeysWith: {(current,_) in current})
+                }
+                if rangeDic.count > 0 {
+                    dic.merge([c.key: rangeDic], uniquingKeysWith: {(current,_) in current})
+                }
+            }
         }
-        //交给具体实现去做检查和处理
         confirmBlock?(dic)
-    }
-    
+    }    
 }
 
 extension FilterViewController: UICollectionViewDataSource,UICollectionViewDelegate {
@@ -49,6 +79,10 @@ extension FilterViewController: UICollectionViewDataSource,UICollectionViewDeleg
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: condition.cellIdentifier, for: indexPath) as! RangeFilterBaseCell
             cell.condition = condition
             return cell
+        case .input:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: condition.cellIdentifier, for: indexPath) as! RangeFilterBaseCell
+            cell.condition = condition
+            return cell
         }
     }
     
@@ -57,7 +91,9 @@ extension FilterViewController: UICollectionViewDataSource,UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        conditions[indexPath.section].setIndex(index: indexPath)
-        collectionView.reloadData()
+        if let con = conditions[indexPath.section] as? SelectFilterCondition {
+            con.setIndex(index: indexPath)
+            collectionView.reloadData()
+        }
     }
 }

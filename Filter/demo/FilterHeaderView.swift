@@ -19,10 +19,14 @@ class ListFilterHeaderView: UICollectionReusableView {
     var condition: FilterCondition? {
         didSet {
             if let c = condition {
-                indicatorBtn.isHidden = !c.needShowPackUp
-                arrowDown = c.isPackUp
                 label.text = c.title
                 label.sizeToFit()
+                if let c = c as? SelectFilterCondition {
+                    indicatorBtn.isHidden = !c.needShowPackUp
+                    arrowDown = c.isPackUp
+                }else {
+                    indicatorBtn.isHidden = true
+                }
             }
         }
     }
@@ -61,7 +65,7 @@ class ListFilterHeaderView: UICollectionReusableView {
     }
     
     @objc func tap() {
-        guard let c = condition else { return }
+        guard let c = condition as? SelectFilterCondition else { return }
         if c.needShowPackUp {
             c.isPackUp = !c.isPackUp
             tapBlock?()

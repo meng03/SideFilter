@@ -8,16 +8,24 @@
 
 import Foundation
 
-protocol ConiditionItem: class {
-    var desc: String? { get set }
-    var choose: Bool { get set }
-    func copy() -> ConiditionItem
-}
-
 enum ListFilterSectionType {
     case singleChoice
     case multipleChoice
     case range
+    case input
+}
+
+protocol ConiditionItem: class {
+    var desc: String? { get set }
+    var choose: Bool { get set }
+    var value: Any? { get }
+    func copy() -> ConiditionItem
+}
+
+//输入类型（输入文字，时间选择）
+protocol InputItem: class {
+    var placeHolder: String? { get set }
+    var value: Any? { get }
 }
 
 class SelectFilterCondition: FilterCondition{
@@ -30,11 +38,13 @@ class SelectFilterCondition: FilterCondition{
         }
     }
     
+    var isPackUp = true
+    
     var configuration: FilterConfiguration!
     
     var required = false
     
-    override var needShowPackUp: Bool {
+    var needShowPackUp: Bool {
         return (items?.count ?? 0) > configuration.packUpCount
     }
     
@@ -50,7 +60,7 @@ class SelectFilterCondition: FilterCondition{
         items = origin?.map({$0.copy()})
     }
     
-    override func setIndex(index: IndexPath) {
+    func setIndex(index: IndexPath) {
         switch type! {
         case .multipleChoice:
             if let choose = items?[index.row].choose {
@@ -68,19 +78,16 @@ class SelectFilterCondition: FilterCondition{
                 }
                 
             }
-        case .range:
+        case .range,.input:
             ()
         }
     }
 }
 
-class RangeFilterCondition<T>: FilterCondition{
+class RangeFilterCondition: FilterCondition{
     
-    var min: T?
-    var max: T?
-    //默认设置placeHolder
-    var minDesc: String?
-    var maxDesc: String?
+    var min: InputItem?
+    var max: InputItem?
     
     override var count: Int {
         return 1
@@ -97,31 +104,40 @@ class RangeFilterCondition<T>: FilterCondition{
     }
 }
 
+class inputFilterCondition: FilterCondition {
+    var input: InputItem?
+    var placeHolder: String?
+    
+    override var count: Int {
+        return 1
+    }
+    
+    override init() {
+        super.init()
+        type = .input
+    }
+    
+    override func reset() {
+        input = nil
+    }
+}
+
 class FilterCondition {
     
     var title: String?
     var cellIdentifier: String!
     var type: ListFilterSectionType!
+    var key: String!
     
     var count: Int{
         return 0
     }
-    
-    var needShowPackUp: Bool {
-        return false
-    }
-    
-    var isPackUp = true
     
     var condition: [String: Any?]? {
         return [:]
     }
     
     func reset(){
-        
-    }
-    
-    func setIndex(index: IndexPath) {
         
     }
 }
