@@ -8,40 +8,6 @@
 
 import UIKit
 
-class DefaultConditionItem: ConiditionItem {
-    
-    var condition: String?
-    
-    var value: Any? {
-        return condition
-    }
-    
-    var desc: String?
-    var choose = false
-    func copy() -> ConiditionItem {
-        let c = DefaultConditionItem()
-        c.choose = choose
-        c.condition = condition
-        c.desc = desc
-        return c
-    }
-}
-
-class TextInputItem: InputItem {
-    
-    var value: Any? {
-        return input
-    }
-    var input: String? {
-        didSet {
-            desc = input
-        }
-    }
-    var placeHolder: String?
-    var desc: String?
-    
-}
-
 class DefaultFilterViewController: FilterViewController {
     
     let confirmButton = UIButton()

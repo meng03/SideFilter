@@ -8,30 +8,28 @@
 
 import UIKit
 
-class ListFilterHeaderView: UICollectionReusableView {
-    
-    var tapBlock: (() -> Void)?
+class ListFilterHeaderView: FilterSectionHeader {
     
     var label = UILabel()
     var indicatorBtn = UIButton()
     var topDividerView = UIView()
     
-    var condition: FilterCondition? {
+    override var condition: FilterCondition? {
         didSet {
             if let c = condition {
                 label.text = c.title
                 label.sizeToFit()
-                if let c = c as? SelectFilterCondition {
-                    indicatorBtn.isHidden = !c.needShowPackUp
-                    arrowDown = c.isPackUp
-                }else {
-                    indicatorBtn.isHidden = true
-                }
             }
         }
     }
     
-    var arrowDown: Bool = true {
+    override var hideFoldEntry: Bool {
+        didSet {
+            indicatorBtn.isHidden = hideFoldEntry
+        }
+    }
+
+    override var arrowDown: Bool {
         didSet {
             if arrowDown {
                 indicatorBtn.setTitle("更多", for: .normal)
@@ -62,14 +60,6 @@ class ListFilterHeaderView: UICollectionReusableView {
         addSubview(label)
         addSubview(indicatorBtn)
         addSubview(topDividerView)
-    }
-    
-    @objc func tap() {
-        guard let c = condition as? SelectFilterCondition else { return }
-        if c.needShowPackUp {
-            c.isPackUp = !c.isPackUp
-            tapBlock?()
-        }
     }
     
     override func layoutSubviews() {

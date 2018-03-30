@@ -21,6 +21,8 @@
 		AA91DE022069E6D1006F800A /* FilterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE012069E6D1006F800A /* FilterConfiguration.swift */; };
 		AA91DE042069F8C3006F800A /* SelectFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE032069F8C3006F800A /* SelectFilterCell.swift */; };
 		AA91DE1A206CDC7D006F800A /* InputFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE19206CDC7D006F800A /* InputFilterCell.swift */; };
+		AA91DE1C206DD14A006F800A /* ConditionItemImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE1B206DD14A006F800A /* ConditionItemImp.swift */; };
+		AA91DE1E206DD1A8006F800A /* FilterSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91DE1D206DD1A8006F800A /* FilterSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		AA91DE012069E6D1006F800A /* FilterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterConfiguration.swift; sourceTree = "<group>"; };
 		AA91DE032069F8C3006F800A /* SelectFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFilterCell.swift; sourceTree = "<group>"; };
 		AA91DE19206CDC7D006F800A /* InputFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFilterCell.swift; sourceTree = "<group>"; };
+		AA91DE1B206DD14A006F800A /* ConditionItemImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionItemImp.swift; sourceTree = "<group>"; };
+		AA91DE1D206DD1A8006F800A /* FilterSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 				AA91DDF62068D4D6006F800A /* FilterViewController.swift */,
 				AA91DDFB2068F592006F800A /* FilterItemView.swift */,
 				AA91DE012069E6D1006F800A /* FilterConfiguration.swift */,
+				AA91DE1D206DD1A8006F800A /* FilterSectionHeader.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -98,13 +103,22 @@
 		AA91DDF82068E204006F800A /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				AA91DE1F206DD4DB006F800A /* View */,
 				AA91DDF92068E23C006F800A /* DefaultFilterViewController.swift */,
-				AA91DDFD206914C0006F800A /* FilterHeaderView.swift */,
 				AA91DDFF20691546006F800A /* Utils.swift */,
+				AA91DE1B206DD14A006F800A /* ConditionItemImp.swift */,
+			);
+			path = demo;
+			sourceTree = "<group>";
+		};
+		AA91DE1F206DD4DB006F800A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA91DDFD206914C0006F800A /* FilterHeaderView.swift */,
 				AA91DE032069F8C3006F800A /* SelectFilterCell.swift */,
 				AA91DE19206CDC7D006F800A /* InputFilterCell.swift */,
 			);
-			path = demo;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,12 +194,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA91DDF52068D09F006F800A /* FilterCondition.swift in Sources */,
+				AA91DE1C206DD14A006F800A /* ConditionItemImp.swift in Sources */,
 				AA91DDFC2068F592006F800A /* FilterItemView.swift in Sources */,
 				AA91DDFA2068E23C006F800A /* DefaultFilterViewController.swift in Sources */,
 				AA91DDFE206914C0006F800A /* FilterHeaderView.swift in Sources */,
 				AA91DDE42068D06A006F800A /* ViewController.swift in Sources */,
 				AA91DE1A206CDC7D006F800A /* InputFilterCell.swift in Sources */,
 				AA91DDF72068D4D6006F800A /* FilterViewController.swift in Sources */,
+				AA91DE1E206DD1A8006F800A /* FilterSectionHeader.swift in Sources */,
 				AA91DDE22068D06A006F800A /* AppDelegate.swift in Sources */,
 				AA91DE022069E6D1006F800A /* FilterConfiguration.swift in Sources */,
 				AA91DE0020691546006F800A /* Utils.swift in Sources */,
